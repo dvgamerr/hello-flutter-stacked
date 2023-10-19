@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
 import 'package:hello_flutter/ui/common/ui_helpers.dart';
+import 'package:stacked/stacked.dart';
 
-import 'home_viewmodel.dart';
+import 'article_viewmodel.dart';
 
-class HomeView extends StackedView<HomeViewModel> {
-  const HomeView({Key? key}) : super(key: key);
+class ArticleView extends StackedView<ArticleViewModel> {
+  const ArticleView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    HomeViewModel viewModel,
+    ArticleViewModel viewModel,
     Widget? child,
   ) {
     return Scaffold(
@@ -27,9 +27,9 @@ class HomeView extends StackedView<HomeViewModel> {
                     verticalSpaceMedium,
                     MaterialButton(
                       color: Colors.black,
-                      onPressed: viewModel.pressedArticleView,
+                      onPressed: viewModel.pressedBack,
                       child: const Text(
-                        "Read more",
+                        "Back",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -69,8 +69,8 @@ class HomeView extends StackedView<HomeViewModel> {
   }
 
   @override
-  HomeViewModel viewModelBuilder(
+  ArticleViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      HomeViewModel();
+      ArticleViewModel();
 }

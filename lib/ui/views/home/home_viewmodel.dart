@@ -1,13 +1,11 @@
-import 'package:hello_flutter/app/app.bottomsheets.dart';
-import 'package:hello_flutter/app/app.dialogs.dart';
 import 'package:hello_flutter/app/app.locator.dart';
-import 'package:hello_flutter/ui/common/app_strings.dart';
+import 'package:hello_flutter/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends BaseViewModel {
   final _dialogService = locator<DialogService>();
-  final _bottomSheetService = locator<BottomSheetService>();
+  final _navigationService = locator<NavigationService>();
 
   String get counterLabel => 'Counter is: $_counter';
 
@@ -18,19 +16,15 @@ class HomeViewModel extends BaseViewModel {
     rebuildUi();
   }
 
-  void showDialog() {
-    _dialogService.showCustomDialog(
-      variant: DialogType.infoAlert,
-      title: 'Stacked Rocks!',
-      description: 'Give stacked $_counter stars on Github',
+  void pressedArticleView() {
+    _navigationService.navigateTo(
+      Routes.articleView,
+      transition: TransitionsBuilders.noTransition,
     );
-  }
-
-  void showBottomSheet() {
-    _bottomSheetService.showCustomSheet(
-      variant: BottomSheetType.notice,
-      title: ksHomeBottomSheetTitle,
-      description: ksHomeBottomSheetDescription,
-    );
+    // _bottomSheetService.showCustomSheet(
+    //   variant: BottomSheetType.notice,
+    //   title: ksHomeBottomSheetTitle,
+    //   description: ksHomeBottomSheetDescription,
+    // );
   }
 }
